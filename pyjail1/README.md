@@ -1,5 +1,5 @@
 # BREIZHCTF 2K16
-** Chall:** Pyjail1 
+**Chall:** Pyjail1 |
 **Points:** 300 |
 **Taux de réussite:** 36% |
 
@@ -37,7 +37,7 @@ Ensuite on regarde ce le contenu de l'attribut "_module"
 
 ```
 
-Un attribut très intéressant apparait, c'est "__builtins__".
+Un attribut très intéressant apparait, c'est "\__builtins\__".
 ```
 >print wclass._module.__builtins__
  {..., '__import__': <built-in function __import__>, ...}
