@@ -13,7 +13,7 @@ Après beaucoup de M&Ms et de l'eau du robinet :p
 En listant les outils qu'on a :
  - La fonction dir
  - La fonction _
- - La declaration de variable de type autre que str (a = 2)
+ - La declaration de variables de type autre que str (a = 2)
 
 L'idée de contruire une chaine de caractères qui sera notre payload pour récupérer le flag semble la plus pertinente, on sait que notre payload est le suivant :
 
@@ -31,7 +31,7 @@ En utilisant la fonction dir on peut instancier un objet de type str :
 > print b
 '__abs__'
 ```
-Comme notre payload contient plein de caractères non alphabétiques il sera dur pour nous de les retrouver juste avec ce qu'on a, mais si on encode le payload en base 16 (hex) l'alphabet sera réduit à 16 caractères !
+Comme notre payload contient plein de caractères non alphabétiques il sera dur pour nous de les retrouver juste avec ce qu'on a, mais, si on encode le payload en base 16 (hex) l'alphabet sera réduit à 16 caractères !
 En plus pour notre objet de type str on a les deux méthodes "encode" et "decode" qui sont autorisées \o/
 
 ```
