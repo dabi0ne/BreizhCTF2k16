@@ -10,7 +10,7 @@ Pour commnecer on cherche les fonctions autorisées.
 
 En essayant quelques une on découvre que y a seulement la fonction dir qui est autorisée.
 
-L'idée pour résoudre ce chall est de trouver une méthode accessible qui pourrait nous permettre d'exécuter une commande sur le système ou de trouver un chemin vers la fonction "\__import\__" de python afin de charger le modue "os".
+L'idée pour résoudre ce chall est de trouver une méthode accessible qui pourrait nous permettre d'exécuter une commande sur le système ou de trouver un chemin vers la fonction "\__import\__" de python afin de charger le module "os".
 
 
 En exécutant la commande suivante sur le serveur on obtient une liste de types et de classes accessbiles depuis notre "jail" :
@@ -19,10 +19,10 @@ En exécutant la commande suivante sur le serveur on obtient une liste de types 
 
 [..., <class 'warnings.catch_warnings'>, ...]
 ```
-On obtient une impotante liste de classes et de type exploitable.
+On obtient une importante liste de classes et de types exploitables.
 Nous allons exploiter la classe "warnings.catch_warnings" car elle a un attribut qui nous intéresse "\_module". (cf: https://hg.python.org/cpython/file/2.7/Lib/warnings.py)
 
-On commence par crée une instace de cette classe dans une variable :
+On commence par la création d'une instance de cette classe dans une variable :
 ```
 >wclass = ().__class__.__base__.__subclasses__()[59]()
 
@@ -42,7 +42,7 @@ Un attribut très intéressant apparait, c'est "\__builtins\__".
 >print wclass._module.__builtins__
  {..., '__import__': <built-in function __import__>, ...}
 ```
-Et bingo, on a accès la fonction "\__import\__".
+Et bingo, on a accès à la fonction "\__import\__".
 
 Maintenant qu'on a accès à cette fonction il ne reste plus qu'à importer le module os et exécuter des commandes sur le système afin de récupérer le flag.
 
